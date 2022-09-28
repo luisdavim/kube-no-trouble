@@ -52,7 +52,7 @@ func Test_textPrinter_Print(t *testing.T) {
 	}
 
 	version, _ := collector.NewVersion("1.2.3")
-	results := []judge.Result{{"Name", "Namespace", "Kind", "1.2.3", "Test", "4.5.6", version}}
+	results := []judge.Result{{"Name", "Namespace", "Kind", "1.2.3", "Test", "4.5.6", version, "test collector"}}
 
 	if err := tp.Print(results); err != nil {
 		t.Fatalf("unexpected error: %v", err)

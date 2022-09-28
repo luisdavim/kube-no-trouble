@@ -67,7 +67,7 @@ func (c *HelmV3Collector) Get() ([]MetaOject, error) {
 	var results []MetaOject
 
 	for _, r := range releases {
-		if manifests, err := parseManifests(r.Manifest, r.Namespace); err != nil {
+		if manifests, err := parseManifests(r.Manifest, r.Namespace, HELM_V3_COLLECTOR_NAME); err != nil {
 			log.Warn().Msgf("failed to parse release %s/%s: %v", r.Namespace, r.Name, err)
 		} else {
 			results = append(results, manifests...)

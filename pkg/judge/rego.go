@@ -63,6 +63,7 @@ func (j *RegoJudge) Eval(input []collector.MetaOject) ([]Result, error) {
 					Namespace:   m["Namespace"].(string),
 					Kind:        m["Kind"].(string),
 					ApiVersion:  m["ApiVersion"].(string),
+					Collector:   m["Collector"].(string),
 					ReplaceWith: m["ReplaceWith"].(string),
 					RuleSet:     m["RuleSet"].(string),
 					Since:       since,

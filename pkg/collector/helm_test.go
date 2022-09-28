@@ -25,7 +25,7 @@ func TestSplitManifests(t *testing.T) {
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
 
-			manifests, err := parseManifests(tc.input, "default")
+			manifests, err := parseManifests(tc.input, "default", "test collector")
 
 			if err != nil {
 				t.Fatalf("Expected to successfully parse manifests: %v", err)

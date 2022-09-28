@@ -7,7 +7,7 @@ import (
 	"sigs.k8s.io/yaml"
 )
 
-func parseManifests(manifest string, defaultNamespace string) ([]MetaOject, error) {
+func parseManifests(manifest, defaultNamespace, collectorName string) ([]MetaOject, error) {
 	var results []MetaOject
 
 	manifests := releaseutil.SplitManifests(manifest)
@@ -21,6 +21,7 @@ func parseManifests(manifest string, defaultNamespace string) ([]MetaOject, erro
 		}
 
 		fixNamespace(&manifest, defaultNamespace)
+		setCollectorAnnotation(&manifest, collectorName)
 
 		results = append(results, manifest)
 	}

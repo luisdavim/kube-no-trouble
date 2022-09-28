@@ -136,14 +136,13 @@ func (c *ClusterCollector) Get() ([]MetaOject, error) {
 
 func (c *ClusterCollector) parseManifest(manifest MetaOject) ([]MetaOject, error) {
 	var results []MetaOject
+	setCollectorAnnotation(&manifest, CLUSTER_COLLECTOR_NAME)
 	results = append(results, manifest)
-	if manifest.Annotations == nil {
-		return results, nil
-	}
 	for _, annotation := range c.additionalAnnotations {
 		if config, ok := manifest.Annotations[annotation]; ok {
 			var m MetaOject
 			if err := yaml.Unmarshal([]byte(config), &m); err == nil {
+				setCollectorAnnotation(&manifest, CLUSTER_COLLECTOR_NAME+"-annotation")
 				results = append(results, m)
 			}
 		}

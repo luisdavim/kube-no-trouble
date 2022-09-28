@@ -10,6 +10,7 @@ type Result struct {
 	RuleSet     string
 	ReplaceWith string
 	Since       *collector.Version
+	Collector   string
 }
 
 type Judge interface {

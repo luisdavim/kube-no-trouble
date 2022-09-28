@@ -70,6 +70,7 @@ func (c *FileCollector) Get() ([]MetaOject, error) {
 				continue
 			}
 
+			setCollectorAnnotation(&manifest, FILE_COLLECTOR_NAME)
 			results = append(results, manifest)
 		}
 

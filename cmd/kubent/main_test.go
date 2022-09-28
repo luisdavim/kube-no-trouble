@@ -259,7 +259,7 @@ func decodeBase64(dst *[]string, encoded string) error {
 func Test_outputResults(t *testing.T) {
 	testVersion, _ := collector.NewVersion("4.5.6")
 	testResults := []judge.Result{{"name", "ns", "kind",
-		"1.2.3", "rs", "rep", testVersion}}
+		"1.2.3", "rs", "rep", testVersion, "test collector"}}
 
 	type args struct {
 		results    []judge.Result

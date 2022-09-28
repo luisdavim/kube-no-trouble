@@ -3,6 +3,7 @@ package custom
 
 main[return] {
 	resource := input[_]
+	annotations := get_default(resource.metadata, "annotations", {"doit-intl.com/kube-no-trouble", "<undefined>"})
 	api := deprecated_resource(resource)
 	return := {
 		"Name": resource.metadata.name,
@@ -13,6 +14,7 @@ main[return] {
 		"ReplaceWith": "<na>",
 		"RuleSet": "Additional resources (custom)",
 		"Since": "<na>",
+		"Collector": get_default(annotations, "doit-intl.com/kube-no-trouble", "<undefined>"),
 	}
 }
 

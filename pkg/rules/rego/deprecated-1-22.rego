@@ -2,6 +2,7 @@ package deprecated122
 
 main[return] {
 	resource := input[_]
+	annotations := get_default(resource.metadata, "annotations", {"doit-intl.com/kube-no-trouble", "<undefined>"})
 	api := deprecated_resource(resource)
 	return := {
 		"Name": get_default(resource.metadata, "name", "<undefined>"),
@@ -12,6 +13,7 @@ main[return] {
 		"ReplaceWith": api.new,
 		"RuleSet": "Deprecated APIs removed in 1.22",
 		"Since": api.since,
+		"Collector": get_default(annotations, "doit-intl.com/kube-no-trouble", "<undefined>"),
 	}
 }
 
